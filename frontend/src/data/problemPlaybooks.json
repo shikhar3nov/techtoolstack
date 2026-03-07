@@ -1,0 +1,324 @@
+[
+  {
+    "slug": "cors-policy-blocked-request",
+    "title": "CORS Policy Blocked Request",
+    "category": "API Errors",
+    "publishedAt": "2026-03-07",
+    "description": "Diagnose browser-blocked requests caused by cross-origin policy mismatches and preflight failures.",
+    "errorSignature": "Access to fetch at ... has been blocked by CORS policy",
+    "keywords": [
+      "cors blocked by policy",
+      "preflight request failed",
+      "access-control-allow-origin fix",
+      "cors react node issue"
+    ],
+    "symptoms": [
+      "Requests fail in browser but succeed in Postman",
+      "OPTIONS preflight returns 403/404",
+      "Authenticated requests fail when credentials are enabled"
+    ],
+    "causes": [
+      "Missing or incorrect Access-Control-Allow-* headers",
+      "Origin whitelist mismatch across environments",
+      "Credentialed requests with wildcard CORS policy"
+    ],
+    "fixSteps": [
+      {
+        "title": "Validate encoded request URL and origin target",
+        "description": "Ensure URL and query parameters are formed correctly before server policy checks.",
+        "toolPath": "/url-encoder-decoder"
+      },
+      {
+        "title": "Normalize and review CORS/auth configuration payloads",
+        "description": "Format middleware and policy JSON to make diff analysis deterministic.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Compare working and failing header/config snapshots",
+        "description": "Use diff to isolate exact policy drift responsible for browser blocking.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/url-encoder-decoder",
+      "/json-formatter",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "how-to-fix-cors-errors-in-react-and-node"
+    ]
+  },
+  {
+    "slug": "timestamp-timezone-mismatch",
+    "title": "Timestamp Timezone Mismatch In API Responses",
+    "category": "Time Errors",
+    "publishedAt": "2026-03-07",
+    "description": "Fix user-visible date/time inconsistencies caused by seconds-vs-milliseconds and timezone conversion drift.",
+    "errorSignature": "Incorrect date/time rendering across regions or environments",
+    "keywords": [
+      "timestamp timezone mismatch",
+      "epoch milliseconds seconds bug",
+      "date conversion issue api",
+      "utc local time bug fix"
+    ],
+    "symptoms": [
+      "Different users see different event times",
+      "Session expiry appears early or late",
+      "Time filters return inconsistent records"
+    ],
+    "causes": [
+      "Mixing seconds and milliseconds formats",
+      "Converting timezone more than once",
+      "Server and client making conflicting assumptions about UTC"
+    ],
+    "fixSteps": [
+      {
+        "title": "Convert and verify epoch values in both UTC and local time",
+        "description": "Use a dedicated converter to confirm canonical interpretation of time values.",
+        "toolPath": "/timestamp-converter"
+      },
+      {
+        "title": "Format and inspect affected payload structures",
+        "description": "Normalize payloads to reveal where timestamp transformations are applied.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Compare successful and failing payload snapshots",
+        "description": "Diff payload revisions to isolate transformation drift between releases.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/timestamp-converter",
+      "/json-formatter",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "unix-timestamp-debugging-across-time-zones"
+    ]
+  },
+  {
+    "slug": "json-parse-unexpected-token",
+    "title": "Fix JSON Parse Error: Unexpected Token",
+    "category": "JSON Errors",
+    "publishedAt": "2026-03-01",
+    "description": "Resolve malformed JSON parsing failures by isolating invalid syntax, escaped values, and contract mismatches.",
+    "errorSignature": "SyntaxError: Unexpected token ... in JSON at position ...",
+    "keywords": [
+      "unexpected token json",
+      "json parse error fix",
+      "invalid json debugging",
+      "json parse position error"
+    ],
+    "symptoms": [
+      "Frontend crashes when parsing API payload",
+      "Data table or UI fails to render after network response",
+      "Errors appear only for specific customer or environment data"
+    ],
+    "causes": [
+      "Missing comma, quote, or closing bracket",
+      "Double-encoded JSON strings passed as objects",
+      "Invalid escape sequences or unsupported characters"
+    ],
+    "fixSteps": [
+      {
+        "title": "Validate payload syntax and formatting",
+        "description": "Paste raw payload into a strict formatter/validator to identify exact invalid segment.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Decode nested escaped values",
+        "description": "If payload is stringified JSON, decode once and inspect the resulting object.",
+        "toolPath": "/json-encode-decode"
+      },
+      {
+        "title": "Compare working vs failing payload",
+        "description": "Run side-by-side diff to isolate mismatch introduced by upstream system.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/json-formatter",
+      "/json-encode-decode",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "how-to-format-json-in-react-without-breaking-data",
+      "json-stringify-vs-json-parse-practical-debugging-guide"
+    ]
+  },
+  {
+    "slug": "jwt-expired-or-invalid-signature",
+    "title": "JWT Expired or Invalid Signature Troubleshooting",
+    "category": "Auth Errors",
+    "publishedAt": "2026-03-01",
+    "description": "Troubleshoot token failures caused by expiration mismatch, malformed claims, algorithm drift, or signature handling issues.",
+    "errorSignature": "jwt expired / invalid signature / token malformed",
+    "keywords": [
+      "jwt expired error",
+      "invalid jwt signature fix",
+      "token malformed troubleshooting"
+    ],
+    "symptoms": [
+      "Users are logged out unexpectedly",
+      "Authenticated APIs return 401 even with fresh login",
+      "Token works in one environment but fails in another"
+    ],
+    "causes": [
+      "Clock skew between issuer and verifier systems",
+      "Wrong signing key or algorithm mismatch",
+      "Corrupted token transport encoding"
+    ],
+    "fixSteps": [
+      {
+        "title": "Decode token claims and verify exp/iat",
+        "description": "Inspect timestamps and key claims to validate token lifecycle assumptions.",
+        "toolPath": "/jwt-decoder"
+      },
+      {
+        "title": "Inspect encoded token segments",
+        "description": "Decode Base64 segments to confirm payload integrity and structure.",
+        "toolPath": "/base64"
+      },
+      {
+        "title": "Diff auth config between environments",
+        "description": "Compare auth middleware/config files to find secret, issuer, or algorithm drift.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/jwt-decoder",
+      "/base64",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "decode-jwt-safely-in-frontend-applications"
+    ]
+  },
+  {
+    "slug": "regex-not-matching-expected-inputs",
+    "title": "Regex Not Matching Expected Inputs",
+    "category": "Validation Errors",
+    "publishedAt": "2026-03-01",
+    "description": "Fix false positives and false negatives in regex validation through repeatable pattern testing and edge-case analysis.",
+    "errorSignature": "Pattern matches wrong values or misses valid values",
+    "keywords": [
+      "regex not matching",
+      "regex validation bug fix",
+      "regular expression troubleshooting"
+    ],
+    "symptoms": [
+      "Valid form inputs are rejected",
+      "Invalid strings pass validation unexpectedly",
+      "Behavior differs between browser/runtime versions"
+    ],
+    "causes": [
+      "Incorrect quantifier boundaries",
+      "Missing anchors (^, $) or wrong flags",
+      "Overly broad character classes"
+    ],
+    "fixSteps": [
+      {
+        "title": "Run targeted pattern tests",
+        "description": "Test pattern against representative valid and invalid inputs with match-group visibility.",
+        "toolPath": "/regex-tester"
+      },
+      {
+        "title": "Compare old and new regex versions",
+        "description": "Diff pattern revisions to understand introduced behavior changes.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/regex-tester",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "regex-tester-workflow-for-form-validation"
+    ]
+  },
+  {
+    "slug": "url-encoding-breaking-api-request",
+    "title": "URL Encoding Breaking API Request",
+    "category": "API Errors",
+    "publishedAt": "2026-03-01",
+    "description": "Diagnose and fix malformed API requests caused by incorrect URL encoding or double-encoded query parameters.",
+    "errorSignature": "400 Bad Request / malformed URL / signature mismatch",
+    "keywords": [
+      "url encoding api issue",
+      "double encoded url fix",
+      "query parameter encoding error"
+    ],
+    "symptoms": [
+      "API returns 400 for specific user inputs",
+      "Signed URLs fail verification",
+      "Spaces/special characters break endpoint behavior"
+    ],
+    "causes": [
+      "Encoding full URL instead of individual values",
+      "Double encoding upstream and client side",
+      "Decoding too early in middleware chain"
+    ],
+    "fixSteps": [
+      {
+        "title": "Encode/decode target parameter values",
+        "description": "Validate exact value-level encoding behavior before constructing final URL.",
+        "toolPath": "/url-encoder-decoder"
+      },
+      {
+        "title": "Diff working and failing request URLs",
+        "description": "Compare complete request strings to identify exact corrupted segment.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/url-encoder-decoder",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "url-encoding-best-practices-for-api-testing"
+    ]
+  },
+  {
+    "slug": "hash-mismatch-after-file-transfer",
+    "title": "Hash Mismatch After File Transfer",
+    "category": "Integrity Errors",
+    "publishedAt": "2026-03-01",
+    "description": "Investigate content integrity issues by comparing hash outputs and file deltas across transfer boundaries.",
+    "errorSignature": "Checksum mismatch / integrity check failed",
+    "keywords": [
+      "hash mismatch fix",
+      "checksum mismatch troubleshooting",
+      "sha256 verification failure"
+    ],
+    "symptoms": [
+      "Downloaded artifact fails integrity check",
+      "Deployment package differs from source artifact",
+      "Checksum verification scripts fail intermittently"
+    ],
+    "causes": [
+      "Transfer corruption or truncation",
+      "Wrong hashing algorithm used at one stage",
+      "Line-ending normalization changes file bytes"
+    ],
+    "fixSteps": [
+      {
+        "title": "Generate hash outputs from both artifacts",
+        "description": "Use same algorithm on both versions and confirm the mismatch deterministically.",
+        "toolPath": "/hash-generator"
+      },
+      {
+        "title": "Compare file contents to isolate changed bytes/lines",
+        "description": "Use file diff to reveal exactly where artifact divergence occurred.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "relatedTools": [
+      "/hash-generator",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "developer-guide-to-file-diff-for-code-reviews"
+    ]
+  }
+]

@@ -1,0 +1,259 @@
+[
+  {
+    "slug": "cors-and-auth-integration-workflow",
+    "title": "CORS and Auth Integration Workflow",
+    "description": "Resolve cross-origin and token-auth issues with a structured transport-to-authorization validation flow.",
+    "heroLabel": "Integration Reliability Workflow",
+    "publishedAt": "2026-03-07",
+    "keywords": [
+      "cors auth workflow",
+      "preflight token debug",
+      "api integration troubleshooting",
+      "401 cors issue fix"
+    ],
+    "outcomes": [
+      "Faster diagnosis of CORS and auth interaction failures",
+      "Lower 401/403 incident recurrence after release",
+      "Consistent debugging workflow across frontend and backend teams"
+    ],
+    "steps": [
+      {
+        "title": "Validate request URL and encoded parameters",
+        "description": "Ensure request targets and encoded values are deterministic before deeper investigation.",
+        "toolPath": "/url-encoder-decoder"
+      },
+      {
+        "title": "Inspect token claims and expiration assumptions",
+        "description": "Decode JWT claims to verify session context and expiry boundaries.",
+        "toolPath": "/jwt-decoder"
+      },
+      {
+        "title": "Normalize auth payload and config snippets",
+        "description": "Format request and config JSON to remove noise and reveal mismatch patterns.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Compare working vs failing response/header snapshots",
+        "description": "Use diff analysis to pinpoint exact policy and config drift.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "primaryTools": [
+      "/url-encoder-decoder",
+      "/jwt-decoder",
+      "/json-formatter",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "how-to-fix-cors-errors-in-react-and-node",
+      "decode-jwt-safely-in-frontend-applications"
+    ]
+  },
+  {
+    "slug": "data-integrity-release-workflow",
+    "title": "Data Integrity Release Workflow",
+    "description": "Release-grade checks for hash integrity, payload drift, and time-consistency validation before deployment.",
+    "heroLabel": "Release Governance Workflow",
+    "publishedAt": "2026-03-07",
+    "keywords": [
+      "data integrity workflow",
+      "hash release checks",
+      "schema drift release validation",
+      "timestamp consistency deployment"
+    ],
+    "outcomes": [
+      "Reduced deployment rollbacks from payload and artifact drift",
+      "Clear pre-release integrity gate for engineering teams",
+      "Higher confidence in cross-environment data behavior"
+    ],
+    "steps": [
+      {
+        "title": "Generate and compare release artifact hashes",
+        "description": "Verify artifact integrity using consistent algorithm and baseline references.",
+        "toolPath": "/hash-generator"
+      },
+      {
+        "title": "Compare JSON contracts between release versions",
+        "description": "Identify semantic contract drift before merge/deploy decisions.",
+        "toolPath": "/file-compare"
+      },
+      {
+        "title": "Normalize API payload fixtures",
+        "description": "Format and validate payload fixtures to ensure stable review and test readability.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Validate epoch and timezone consistency",
+        "description": "Convert timestamps to verify service boundaries and user-region correctness.",
+        "toolPath": "/timestamp-converter"
+      }
+    ],
+    "primaryTools": [
+      "/hash-generator",
+      "/file-compare",
+      "/json-formatter",
+      "/timestamp-converter"
+    ],
+    "relatedGuides": [
+      "how-to-compare-json-files-and-detect-schema-drift",
+      "unix-timestamp-debugging-across-time-zones"
+    ]
+  },
+  {
+    "slug": "api-debug-workflow",
+    "title": "API Debug Workflow",
+    "description": "End-to-end API troubleshooting flow for malformed payloads, encoding issues, token failures, and regression-safe comparisons.",
+    "heroLabel": "Flagship Workflow",
+    "publishedAt": "2026-03-01",
+    "keywords": [
+      "api debug workflow",
+      "json parse error fix",
+      "url encoding api testing",
+      "jwt troubleshooting"
+    ],
+    "outcomes": [
+      "Reduce API integration incidents before production release",
+      "Diagnose malformed payloads quickly with structured steps",
+      "Standardize team debugging workflow across FE, BE, and QA"
+    ],
+    "steps": [
+      {
+        "title": "Validate and normalize request/response payloads",
+        "description": "Start by validating and formatting raw payloads to eliminate syntax-level noise and reveal structural issues.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Decode escaped payload fragments",
+        "description": "Inspect double-encoded or escaped values and recover readable JSON content for root-cause analysis.",
+        "toolPath": "/json-encode-decode"
+      },
+      {
+        "title": "Inspect token claims and expiry",
+        "description": "Decode JWT headers/payloads to understand auth state and expiration behavior during failures.",
+        "toolPath": "/jwt-decoder"
+      },
+      {
+        "title": "Verify query/path encoding",
+        "description": "Encode or decode URL components to prevent broken request signatures and bad gateway errors.",
+        "toolPath": "/url-encoder-decoder"
+      },
+      {
+        "title": "Compare before/after payload versions",
+        "description": "Run diff review on payload snapshots or configs to isolate exact change points.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "primaryTools": [
+      "/json-formatter",
+      "/json-encode-decode",
+      "/jwt-decoder",
+      "/url-encoder-decoder",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "how-to-format-json-in-react-without-breaking-data",
+      "decode-jwt-safely-in-frontend-applications",
+      "url-encoding-best-practices-for-api-testing"
+    ]
+  },
+  {
+    "slug": "release-readiness-diff-workflow",
+    "title": "Release Readiness Diff Workflow",
+    "description": "A regression-focused release workflow for config changes, payload contract updates, and validation rule drift.",
+    "heroLabel": "Engineering Ops Workflow",
+    "publishedAt": "2026-03-01",
+    "keywords": [
+      "release readiness checklist",
+      "config diff workflow",
+      "compare code changes online",
+      "regex validation qa"
+    ],
+    "outcomes": [
+      "Catch risky changes before release cut",
+      "Improve reviewer confidence with structured diff checks",
+      "Lower rollback frequency from configuration drift"
+    ],
+    "steps": [
+      {
+        "title": "Compare release candidate files",
+        "description": "Run split/unified diff between previous stable and release candidate files.",
+        "toolPath": "/file-compare"
+      },
+      {
+        "title": "Validate transformed data structures",
+        "description": "Normalize and validate JSON/XML/HTML/SQL artifacts used in the release flow.",
+        "toolPath": "/json-formatter"
+      },
+      {
+        "title": "Re-test input validation rules",
+        "description": "Run edge-case regex checks for forms, parsers, and extraction patterns affected by the release.",
+        "toolPath": "/regex-tester"
+      },
+      {
+        "title": "Re-verify endpoint query behavior",
+        "description": "Confirm URL encoding behavior for user-generated inputs and integration parameters.",
+        "toolPath": "/url-encoder-decoder"
+      }
+    ],
+    "primaryTools": [
+      "/file-compare",
+      "/json-formatter",
+      "/regex-tester",
+      "/url-encoder-decoder"
+    ],
+    "relatedGuides": [
+      "developer-guide-to-file-diff-for-code-reviews",
+      "regex-tester-workflow-for-form-validation"
+    ]
+  },
+  {
+    "slug": "security-token-diagnostics-workflow",
+    "title": "Security Token Diagnostics Workflow",
+    "description": "Security-debug process for token inspection, integrity checks, and session-state troubleshooting.",
+    "heroLabel": "Security Workflow",
+    "publishedAt": "2026-03-01",
+    "keywords": [
+      "jwt token diagnostics",
+      "auth debugging workflow",
+      "hash verification checks",
+      "base64 token inspection"
+    ],
+    "outcomes": [
+      "Faster resolution of auth/session incidents",
+      "Clear decode-versus-verify boundary for secure teams",
+      "Repeatable diagnostics playbook for support and engineering"
+    ],
+    "steps": [
+      {
+        "title": "Decode JWT and inspect claim health",
+        "description": "Identify malformed claims, missing fields, and expiry timing mismatches.",
+        "toolPath": "/jwt-decoder"
+      },
+      {
+        "title": "Inspect Base64 token fragments",
+        "description": "Decode nested or encoded segments to understand payload structure and anomalies.",
+        "toolPath": "/base64"
+      },
+      {
+        "title": "Generate hash references for integrity checks",
+        "description": "Create and compare hashes while validating generated artifacts and signed payload metadata.",
+        "toolPath": "/hash-generator"
+      },
+      {
+        "title": "Track config deltas impacting auth",
+        "description": "Compare changed configs or middleware snippets that influence token handling.",
+        "toolPath": "/file-compare"
+      }
+    ],
+    "primaryTools": [
+      "/jwt-decoder",
+      "/base64",
+      "/hash-generator",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "decode-jwt-safely-in-frontend-applications",
+      "developer-guide-to-file-diff-for-code-reviews"
+    ]
+  }
+]

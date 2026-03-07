@@ -1,0 +1,213 @@
+[
+  {
+    "slug": "qa-regression-debug-stack",
+    "title": "QA Regression Debug Stack",
+    "description": "A release-focused solution path for QA teams to detect payload drift, broken validations, and environment regressions quickly.",
+    "excerpt": "Establish a reliable pre-release debugging stack for data contracts, regex behavior, and endpoint consistency.",
+    "publishedAt": "2026-03-07",
+    "keywords": [
+      "qa regression debugging tools",
+      "release validation workflow",
+      "payload drift detection",
+      "qa automation troubleshooting"
+    ],
+    "heroLabel": "QA Operations Solution",
+    "outcomes": [
+      "Shorter regression triage cycles for release candidates",
+      "Higher release confidence before production push",
+      "Improved collaboration between QA, frontend, and backend teams"
+    ],
+    "workflow": [
+      {
+        "step": "Normalize and validate changed payload fixtures",
+        "detail": "Start by formatting fixtures and logs to create deterministic review artifacts for QA and dev teams."
+      },
+      {
+        "step": "Compare stable vs candidate behavior snapshots",
+        "detail": "Run structured diffs for responses, validation patterns, and edge-case outputs to isolate regressions."
+      },
+      {
+        "step": "Retest URL and pattern handling with edge-case inputs",
+        "detail": "Validate encoding and regex boundaries across browser/runtime variations before release sign-off."
+      }
+    ],
+    "recommendedTools": [
+      "/json-formatter",
+      "/file-compare",
+      "/regex-tester",
+      "/url-encoder-decoder"
+    ],
+    "relatedGuides": [
+      "how-to-compare-json-files-and-detect-schema-drift",
+      "regex-tester-workflow-for-form-validation"
+    ]
+  },
+  {
+    "slug": "api-security-observability",
+    "title": "API Security and Observability Blueprint",
+    "description": "A practical security and observability path for token handling, request integrity, and incident response playbooks.",
+    "excerpt": "Build stronger API trust boundaries with token diagnostics, payload integrity checks, and response monitoring workflows.",
+    "publishedAt": "2026-03-07",
+    "keywords": [
+      "api security observability",
+      "jwt incident response workflow",
+      "request integrity validation",
+      "auth debugging enterprise"
+    ],
+    "heroLabel": "Security Engineering Solution",
+    "outcomes": [
+      "Faster investigation of auth and request-integrity incidents",
+      "Clear separation of diagnostic and trust-boundary logic",
+      "Reduced security-related outage impact through repeatable playbooks"
+    ],
+    "workflow": [
+      {
+        "step": "Decode and inspect token lifecycle behavior",
+        "detail": "Audit token claims and expiry assumptions to understand incident patterns quickly."
+      },
+      {
+        "step": "Verify payload and artifact integrity checks",
+        "detail": "Cross-check hashes and encoded transport values to ensure deterministic data flow."
+      },
+      {
+        "step": "Compare policy and middleware drift between environments",
+        "detail": "Use diff-based analysis for rapid detection of auth config drift and policy mismatch."
+      }
+    ],
+    "recommendedTools": [
+      "/jwt-decoder",
+      "/hash-generator",
+      "/base64",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "decode-jwt-safely-in-frontend-applications",
+      "base64-encoding-for-api-payloads-and-images"
+    ]
+  },
+  {
+    "slug": "json-workflows-for-react-teams",
+    "title": "JSON Workflows for React Teams",
+    "description": "A practical implementation path for parsing, formatting, and debugging JSON payloads safely in frontend systems.",
+    "excerpt": "Reduce parse errors and speed up debugging with a standardized JSON workflow used by frontend, backend, and QA teams.",
+    "publishedAt": "2026-02-27",
+    "keywords": [
+      "json workflow react",
+      "format json in react",
+      "react json parse debugging",
+      "json validation process"
+    ],
+    "heroLabel": "Solution Cluster",
+    "outcomes": [
+      "Lower parse/runtime errors in production flows",
+      "Faster pull-request reviews with canonical formatting",
+      "Shared data contract language across teams"
+    ],
+    "workflow": [
+      {
+        "step": "Validate payload structure before any UI render logic",
+        "detail": "Start every payload review with strict validation to catch malformed syntax and type inconsistencies early."
+      },
+      {
+        "step": "Normalize formatting and compare revisions",
+        "detail": "Use a deterministic formatter and compare changed payload versions to isolate semantic differences."
+      },
+      {
+        "step": "Encode/decode boundary values intentionally",
+        "detail": "Track data type at each service boundary to avoid accidental double-stringify or parse failures."
+      }
+    ],
+    "recommendedTools": [
+      "/json-formatter",
+      "/json-encode-decode",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "how-to-format-json-in-react-without-breaking-data",
+      "json-stringify-vs-json-parse-practical-debugging-guide"
+    ]
+  },
+  {
+    "slug": "secure-jwt-debugging-and-token-operations",
+    "title": "Secure JWT Debugging and Token Operations",
+    "description": "A security-first playbook for decoding JWTs, inspecting claims, and troubleshooting token behavior safely.",
+    "excerpt": "Separate decode from verification, inspect expiration logic, and standardize auth debugging practices across teams.",
+    "publishedAt": "2026-02-27",
+    "keywords": [
+      "jwt debugging workflow",
+      "decode jwt safely",
+      "jwt claims inspection",
+      "frontend jwt troubleshooting"
+    ],
+    "heroLabel": "Security Solution",
+    "outcomes": [
+      "Clear separation of frontend decode and backend verification",
+      "Faster diagnosis of token expiry and claim mismatch issues",
+      "Reduced auth-related support escalation volume"
+    ],
+    "workflow": [
+      {
+        "step": "Inspect token structure and expiry claims",
+        "detail": "Decode token segments to validate formatting and confirm issuance or expiration timelines."
+      },
+      {
+        "step": "Cross-check encoded segments for anomalies",
+        "detail": "Decode Base64 segments to understand embedded data behavior during integration troubleshooting."
+      },
+      {
+        "step": "Enforce server-side authorization boundary",
+        "detail": "Use frontend decoding for diagnostics only and keep all trust decisions in backend services."
+      }
+    ],
+    "recommendedTools": [
+      "/jwt-decoder",
+      "/base64",
+      "/hash-generator"
+    ],
+    "relatedGuides": [
+      "decode-jwt-safely-in-frontend-applications"
+    ]
+  },
+  {
+    "slug": "api-testing-and-encoding-operations",
+    "title": "API Testing and Encoding Operations",
+    "description": "An execution framework for URL encoding, payload transformation, and regex validation in integration testing.",
+    "excerpt": "Eliminate broken API requests by applying consistent encoding rules and validation checks before release.",
+    "publishedAt": "2026-02-27",
+    "keywords": [
+      "api encoding best practices",
+      "url encoding workflow",
+      "integration testing checklist",
+      "regex validation api"
+    ],
+    "heroLabel": "Integration Solution",
+    "outcomes": [
+      "Fewer malformed requests in staging and production",
+      "Quicker root-cause analysis for integration failures",
+      "Stronger QA confidence with repeatable test patterns"
+    ],
+    "workflow": [
+      {
+        "step": "Encode parameters and inspect final URL behavior",
+        "detail": "Apply correct URL encoding at value level and decode final requests to verify transport integrity."
+      },
+      {
+        "step": "Validate request/response patterns with regex",
+        "detail": "Test expected and malformed variants to avoid over-restrictive or permissive rules."
+      },
+      {
+        "step": "Compare payload or contract changes before release",
+        "detail": "Use structured file diff workflows to flag risky deltas in request templates and configuration."
+      }
+    ],
+    "recommendedTools": [
+      "/url-encoder-decoder",
+      "/regex-tester",
+      "/file-compare"
+    ],
+    "relatedGuides": [
+      "url-encoding-best-practices-for-api-testing",
+      "regex-tester-workflow-for-form-validation"
+    ]
+  }
+]

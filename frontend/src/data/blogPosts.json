@@ -1,0 +1,451 @@
+[
+  {
+    "slug": "how-to-fix-cors-errors-in-react-and-node",
+    "title": "How To Fix CORS Errors In React And Node",
+    "description": "A practical CORS troubleshooting guide for frontend and backend teams, including preflight checks and credential-safe policies.",
+    "excerpt": "Fix CORS policy failures with a repeatable workflow covering browser errors, server headers, and environment mismatches.",
+    "publishedAt": "2026-03-07",
+    "updatedAt": "2026-03-07",
+    "category": "API Debugging",
+    "readTime": "9 min read",
+    "keywords": [
+      "fix cors error in react",
+      "cors policy blocked request",
+      "cors preflight troubleshooting",
+      "react node cors setup"
+    ],
+    "primaryTool": "/url-encoder-decoder",
+    "secondaryTools": [
+      "/json-formatter",
+      "/file-compare"
+    ],
+    "sections": [
+      {
+        "heading": "Why CORS issues keep recurring",
+        "paragraphs": [
+          "CORS failures often reappear because teams patch one endpoint but leave inconsistent policies across environments.",
+          "The browser blocks requests before your business logic runs, so you must debug transport and headers first."
+        ]
+      },
+      {
+        "heading": "Step-by-step debugging sequence",
+        "paragraphs": [
+          "Step 1: Inspect the exact browser console error and identify whether it is origin, method, header, or credential related.",
+          "Step 2: Validate the request URL and query values, then confirm no malformed encoding causes route mismatch.",
+          "Step 3: Compare working and failing response headers to isolate missing Access-Control-Allow-* values.",
+          "Step 4: Re-test preflight and credentialed requests after each server policy change."
+        ]
+      },
+      {
+        "heading": "Production guardrails",
+        "paragraphs": [
+          "Version CORS policies as infrastructure code to avoid manual drift.",
+          "Document approved origins and rollout policy changes per environment."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "how-to-compare-json-files-and-detect-schema-drift",
+    "title": "How To Compare JSON Files And Detect Schema Drift",
+    "description": "Learn how to detect contract drift in JSON payloads before releases using formatter and diff-first workflow.",
+    "excerpt": "Prevent integration breaks by comparing normalized JSON versions and reviewing semantic structure changes.",
+    "publishedAt": "2026-03-07",
+    "updatedAt": "2026-03-07",
+    "category": "Release Engineering",
+    "readTime": "8 min read",
+    "keywords": [
+      "compare json files online",
+      "json schema drift detection",
+      "json contract changes",
+      "json diff workflow"
+    ],
+    "primaryTool": "/file-compare",
+    "secondaryTools": [
+      "/json-formatter",
+      "/hash-generator"
+    ],
+    "sections": [
+      {
+        "heading": "What schema drift looks like in production",
+        "paragraphs": [
+          "Schema drift appears as renamed keys, changed nesting, missing required fields, or type shifts that pass unnoticed in local tests.",
+          "Small drift can cascade into parser failures, feature flags breaking, and analytics corruption."
+        ]
+      },
+      {
+        "heading": "Reliable comparison workflow",
+        "paragraphs": [
+          "Normalize both JSON files with consistent spacing before comparison.",
+          "Run side-by-side diff and isolate changes by category: added, removed, modified.",
+          "Flag any field-level changes that impact consumers or downstream validations."
+        ]
+      },
+      {
+        "heading": "Operationalizing the process",
+        "paragraphs": [
+          "Add JSON contract diff checks in release readiness review.",
+          "Store approved schema snapshots for rapid regression triage."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "base64-encoding-for-api-payloads-and-images",
+    "title": "Base64 Encoding For API Payloads And Images",
+    "description": "Use Base64 safely for transport scenarios without inflating payloads or corrupting binary data.",
+    "excerpt": "A practical guide for when to use Base64, how to validate outputs, and how to avoid double encoding bugs.",
+    "publishedAt": "2026-03-07",
+    "updatedAt": "2026-03-07",
+    "category": "Data Transformation",
+    "readTime": "7 min read",
+    "keywords": [
+      "base64 image encoding api",
+      "base64 payload troubleshooting",
+      "encode decode binary data",
+      "base64 double encoding fix"
+    ],
+    "primaryTool": "/base64",
+    "secondaryTools": [
+      "/json-encode-decode",
+      "/file-compare"
+    ],
+    "sections": [
+      {
+        "heading": "When Base64 helps and when it hurts",
+        "paragraphs": [
+          "Base64 is useful when systems require text-safe transport, but it increases size and can mask binary corruption.",
+          "Use it intentionally for compatibility scenarios, not as a default for every file transfer."
+        ]
+      },
+      {
+        "heading": "Implementation checks",
+        "paragraphs": [
+          "Encode at one boundary only and track where decode should happen.",
+          "Validate output length and content signature before persistence or forwarding.",
+          "Compare original and decoded artifacts when investigating transfer bugs."
+        ]
+      },
+      {
+        "heading": "Team standards",
+        "paragraphs": [
+          "Document accepted encodings per endpoint contract.",
+          "Add payload examples for both encoded and decoded forms in API docs."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "unix-timestamp-debugging-across-time-zones",
+    "title": "Unix Timestamp Debugging Across Time Zones",
+    "description": "Prevent time-based bugs by validating Unix timestamps, timezone conversions, and daylight-saving boundaries.",
+    "excerpt": "A practical troubleshooting guide for timestamp mismatch issues in distributed frontend-backend systems.",
+    "publishedAt": "2026-03-07",
+    "updatedAt": "2026-03-07",
+    "category": "Time & Data Integrity",
+    "readTime": "8 min read",
+    "keywords": [
+      "unix timestamp timezone issue",
+      "epoch conversion bug fix",
+      "timestamp mismatch frontend backend",
+      "date timezone debugging"
+    ],
+    "primaryTool": "/timestamp-converter",
+    "secondaryTools": [
+      "/json-formatter",
+      "/file-compare"
+    ],
+    "sections": [
+      {
+        "heading": "Why timestamp bugs are costly",
+        "paragraphs": [
+          "Timestamp bugs silently break scheduling, auth expiry, and analytics windows, often only in specific regions.",
+          "Cross-system assumptions about UTC, local time, and milliseconds are the main failure source."
+        ]
+      },
+      {
+        "heading": "Debug workflow",
+        "paragraphs": [
+          "Verify whether each timestamp is seconds or milliseconds.",
+          "Convert values in UTC and local timezone side-by-side to reveal offsets.",
+          "Compare working and failing payload snapshots to detect transformation drift."
+        ]
+      },
+      {
+        "heading": "Stability controls",
+        "paragraphs": [
+          "Store canonical timestamps in UTC and convert only at presentation layer.",
+          "Add contract tests for daylight-saving and timezone edge cases."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "how-to-format-json-in-react-without-breaking-data",
+    "title": "How To Format JSON In React Without Breaking Data",
+    "description": "A practical guide to formatting JSON in React apps safely, validating payloads, and preventing parse/runtime errors.",
+    "excerpt": "Learn a safe JSON formatting workflow for React applications, including validation guards, fallback handling, and debugging tips.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "JSON Workflows",
+    "readTime": "8 min read",
+    "keywords": [
+      "how to format json in react",
+      "json formatter react",
+      "react json parse error",
+      "json validation workflow"
+    ],
+    "primaryTool": "/json-formatter",
+    "secondaryTools": [
+      "/json-encode-decode",
+      "/file-compare"
+    ],
+    "sections": [
+      {
+        "heading": "Why JSON formatting breaks in real projects",
+        "paragraphs": [
+          "Most React issues with JSON happen because teams assume payload shape is always valid. In production, payloads often include malformed fields, missing keys, or escaped values from third-party systems.",
+          "The safest approach is to validate first, then transform, then render. This sequence prevents user-facing crashes and makes debugging deterministic for engineering teams."
+        ]
+      },
+      {
+        "heading": "Recommended step-by-step workflow",
+        "paragraphs": [
+          "Step 1: Paste the payload into a strict formatter/validator and fix syntax errors before touching app code.",
+          "Step 2: Normalize to stable spacing (2-space or 4-space) so diffs stay readable in PR reviews.",
+          "Step 3: Add guard clauses for parse failures and log contextual metadata for quick triage.",
+          "Step 4: Re-test with edge-case payloads before shipping."
+        ]
+      },
+      {
+        "heading": "Operational best practices",
+        "paragraphs": [
+          "Document expected JSON contract in your repo and enforce it in CI where possible.",
+          "Use a shared tool workflow so frontend and backend engineers inspect the same canonical JSON representation."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "json-stringify-vs-json-parse-practical-debugging-guide",
+    "title": "JSON.stringify vs JSON.parse: A Practical Debugging Guide",
+    "description": "Understand when to stringify and parse, how to avoid double-encoding, and how to debug escaped JSON safely.",
+    "excerpt": "A field guide for developers dealing with escaped strings, nested JSON, and double parse/stringify mistakes.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "JSON Workflows",
+    "readTime": "7 min read",
+    "keywords": [
+      "json stringify vs parse",
+      "double encoded json",
+      "json escaped string",
+      "json parse debugging"
+    ],
+    "primaryTool": "/json-encode-decode",
+    "secondaryTools": [
+      "/json-formatter",
+      "/base64"
+    ],
+    "sections": [
+      {
+        "heading": "The difference that causes most bugs",
+        "paragraphs": [
+          "JSON.stringify converts JavaScript values into JSON text. JSON.parse converts JSON text into JavaScript values.",
+          "Bugs happen when teams parse values that are already objects or stringify content multiple times before transport."
+        ]
+      },
+      {
+        "heading": "How to detect double encoding quickly",
+        "paragraphs": [
+          "If your JSON starts and ends with quotes and has escaped braces, it may be an encoded JSON string instead of raw JSON.",
+          "Decode once, inspect output, and only parse further if the decoded result is still JSON text."
+        ]
+      },
+      {
+        "heading": "Production checklist",
+        "paragraphs": [
+          "Track payload type at each boundary (API, storage, UI state).",
+          "Use explicit encoding/decoding helpers instead of ad-hoc inline transformations."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "decode-jwt-safely-in-frontend-applications",
+    "title": "How To Decode JWT Safely In Frontend Applications",
+    "description": "Learn secure JWT decoding practices in frontend systems without leaking secrets or trusting unsigned claims.",
+    "excerpt": "Decode JWTs for debugging and UX decisions while keeping security boundaries clear between decode and verify.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "Security Debugging",
+    "readTime": "9 min read",
+    "keywords": [
+      "decode jwt frontend",
+      "jwt debugging",
+      "jwt payload inspection",
+      "jwt security best practices"
+    ],
+    "primaryTool": "/jwt-decoder",
+    "secondaryTools": [
+      "/base64",
+      "/hash-generator"
+    ],
+    "sections": [
+      {
+        "heading": "Decode is not verification",
+        "paragraphs": [
+          "Frontend decoding is useful for diagnostics and UI behavior, but it does not prove token integrity.",
+          "Signature verification and authorization decisions must remain on trusted backend services."
+        ]
+      },
+      {
+        "heading": "Safe frontend usage patterns",
+        "paragraphs": [
+          "Use decoded claims for non-sensitive UI context only, such as showing expiration countdowns.",
+          "Never trust role or permission claims in frontend code for access control enforcement."
+        ]
+      },
+      {
+        "heading": "Operational guidance",
+        "paragraphs": [
+          "Instrument token-expiry telemetry so product teams can proactively address session friction.",
+          "Standardize JWT debugging flow with a shared decoder tool and incident runbook."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "regex-tester-workflow-for-form-validation",
+    "title": "Regex Tester Workflow For Production Form Validation",
+    "description": "Build robust regex validation with a practical workflow for testing patterns, edge cases, and maintainability.",
+    "excerpt": "Use a repeatable regex testing process to reduce false positives, false negatives, and support overhead.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "Validation Systems",
+    "readTime": "8 min read",
+    "keywords": [
+      "regex tester workflow",
+      "regex form validation",
+      "test regex patterns",
+      "regex best practices"
+    ],
+    "primaryTool": "/regex-tester",
+    "secondaryTools": [
+      "/file-compare",
+      "/url-encoder-decoder"
+    ],
+    "sections": [
+      {
+        "heading": "Why regex validation fails in production",
+        "paragraphs": [
+          "Teams often validate against happy-path samples and miss regional formats, unicode, or malformed edge cases.",
+          "This leads to silent conversion loss, user frustration, and increased support tickets."
+        ]
+      },
+      {
+        "heading": "Pattern quality workflow",
+        "paragraphs": [
+          "Define acceptance criteria for valid and invalid inputs before writing the regex.",
+          "Run the pattern against representative data sets and capture mismatch categories.",
+          "Version patterns and compare revisions when introducing stricter validation rules."
+        ]
+      },
+      {
+        "heading": "Governance",
+        "paragraphs": [
+          "Treat regex patterns as product logic with code review and rollback plans.",
+          "Document regex intent clearly so future teams can maintain patterns confidently."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "developer-guide-to-file-diff-for-code-reviews",
+    "title": "Developer Guide To File Diff Workflows For Better Code Reviews",
+    "description": "Use structured diff workflows to improve review accuracy, detect regression risk, and speed up approval cycles.",
+    "excerpt": "A practical process for comparing text/code changes with better context and lower review noise.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "Code Review Ops",
+    "readTime": "7 min read",
+    "keywords": [
+      "file diff workflow",
+      "code review diff best practices",
+      "compare code changes",
+      "text diff tool"
+    ],
+    "primaryTool": "/file-compare",
+    "secondaryTools": [
+      "/json-formatter",
+      "/regex-tester"
+    ],
+    "sections": [
+      {
+        "heading": "Diff quality drives review quality",
+        "paragraphs": [
+          "Unformatted inputs and mixed concerns in one diff create cognitive overload for reviewers.",
+          "Normalize data first, then compare focused units so signal remains high."
+        ]
+      },
+      {
+        "heading": "Review sequence for high confidence",
+        "paragraphs": [
+          "Start with structural changes, then validate semantic edits line-by-line.",
+          "Use change navigation and filter modes to inspect critical sections faster.",
+          "Document risky deltas before approval to reduce post-merge regressions."
+        ]
+      },
+      {
+        "heading": "Team-level scaling",
+        "paragraphs": [
+          "Adopt a shared compare workflow in engineering playbooks.",
+          "Track common diff-caused regressions and harden your review checklist accordingly."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "url-encoding-best-practices-for-api-testing",
+    "title": "URL Encoding Best Practices For API Testing And Integrations",
+    "description": "Prevent broken requests by applying correct URL encoding rules for query parameters, paths, and special characters.",
+    "excerpt": "A practical URL encoding checklist for frontend developers, QA engineers, and integration teams.",
+    "publishedAt": "2026-02-26",
+    "updatedAt": "2026-02-26",
+    "category": "API Testing",
+    "readTime": "6 min read",
+    "keywords": [
+      "url encoding best practices",
+      "encode query parameters",
+      "api url decode",
+      "percent encoding guide"
+    ],
+    "primaryTool": "/url-encoder-decoder",
+    "secondaryTools": [
+      "/base64",
+      "/json-encode-decode"
+    ],
+    "sections": [
+      {
+        "heading": "Common integration failures",
+        "paragraphs": [
+          "Special characters in query strings frequently break API requests when not encoded consistently.",
+          "Double encoding and mixed encoding libraries are common causes of difficult-to-debug production issues."
+        ]
+      },
+      {
+        "heading": "Encoding workflow",
+        "paragraphs": [
+          "Encode values, not entire pre-encoded URLs, unless your integration explicitly requires full normalization.",
+          "Always decode and inspect final request URLs in QA before releasing endpoint integrations."
+        ]
+      },
+      {
+        "heading": "Operational controls",
+        "paragraphs": [
+          "Standardize URL handling helpers across repositories.",
+          "Include encoded/decoded examples in API documentation for partner teams."
+        ]
+      }
+    ]
+  }
+]

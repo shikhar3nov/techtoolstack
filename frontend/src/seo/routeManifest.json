@@ -1,0 +1,28 @@
+{
+  "canonicalSiteUrl": "https://www.techtoolstack.com",
+  "routes": [
+    { "path": "/", "indexable": true, "changefreq": "weekly", "priority": 1.0 },
+    { "path": "/ai-prompt-generator", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/ai-error-router", "indexable": true, "changefreq": "weekly", "priority": 0.9 },
+    { "path": "/ai-json-contract-assistant", "indexable": true, "changefreq": "weekly", "priority": 0.9 },
+    { "path": "/ai-tools", "indexable": true, "changefreq": "weekly", "priority": 0.9 },
+    { "path": "/json-formatter", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/file-compare", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/regex-tester", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/base64", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/json-encode-decode", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/jwt-decoder", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/url-encoder-decoder", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/timestamp-converter", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/hash-generator", "indexable": true, "changefreq": "monthly", "priority": 0.8 },
+    { "path": "/contact", "indexable": true, "changefreq": "monthly", "priority": 0.6 },
+    { "path": "/blog", "indexable": true, "changefreq": "weekly", "priority": 0.7 },
+    { "path": "/library", "indexable": false, "changefreq": "weekly", "priority": 0.4 },
+    { "path": "/workflows", "indexable": true, "changefreq": "weekly", "priority": 0.7 },
+    { "path": "/problems", "indexable": true, "changefreq": "weekly", "priority": 0.7 },
+    { "path": "/solutions", "indexable": true, "changefreq": "weekly", "priority": 0.7 },
+    { "path": "/workspace-studio", "indexable": true, "changefreq": "weekly", "priority": 0.6 },
+    { "path": "/shared-workspace", "indexable": false, "changefreq": "monthly", "priority": 0.1 },
+    { "path": "/growth-insights", "indexable": false, "changefreq": "monthly", "priority": 0.2 }
+  ]
+}
